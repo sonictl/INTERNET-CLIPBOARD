@@ -62,7 +62,7 @@ pnpm build  # 或 npm run build
 1. 安装后端依赖
 
 ```bash
-cd houtai
+cd BackEnd
 pnpm install  # 或 npm install
 ```
 
@@ -124,17 +124,22 @@ CREATE TABLE IF NOT EXISTS clipboard (
 使用Caddy作为Web服务器和反向代理，可以轻松处理HTTPS和API转发。以下是一个基本的Caddyfile配置示例：
 
 ```
-:80 {
-    root * /var/www/haozhuxue/dist  # 静态文件根目录
-    file_server
-    handle /api/* {
-        reverse_proxy http://123.99.249.246:80
+your domain {
+    root * /var/www/clip.laozao.xyz/dist  # 静态文件根目录
+    
+    # 将所有 /api 请求转发到本机的 3009 端口，并移除 /api 前缀
+    handle /api* {
+        uri strip_prefix /api
+        reverse_proxy localhost:3009
     }
-
+    
+    # 处理前端路由（单页应用）
     handle {
         try_files {path} /index.html
-        file_server
     }
+    
+    # 为静态文件提供服务
+    file_server
 }
 ```
 
