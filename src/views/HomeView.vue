@@ -15,12 +15,12 @@ const createClipboard = async () => {
   // 生成随机id
   const num = generateRandomNumber(10)
   await create(num)
-  router.push(`/content/${num}`)
+  router.push(`/${num}`)
 }
 // 索引输入查询输入按钮
 const inpIndex = ref(null)
 const search = ()=>{
-  router.push(`/content/${inpIndex.value}`)
+  router.push(`/${inpIndex.value}`)
 }
 // 生成随机数 用来配置剪贴板的索引
 function generateRandomNumber(length) {
