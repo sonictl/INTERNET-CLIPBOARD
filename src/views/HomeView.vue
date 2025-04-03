@@ -108,6 +108,9 @@ p {
   caret-color: transparent;
 }
 
+.search-txt {
+  caret-color: white;
+}
 @font-face {
   font-family: 'MyCustomFont';
   src: url('../assets/font/UNSII-2.ttf') format('truetype');

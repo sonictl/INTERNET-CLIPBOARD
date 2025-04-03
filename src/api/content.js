@@ -7,10 +7,12 @@ export const query = (id) => {
 
 // 往服务器插入数据
 export const insert = (obj) => {
-  const { id, content } = obj
+  const { id, content, expireDays, burnAfterRead } = obj
   
   return request.post('/insertContent', {
     id,
-    content:content.value
+    content,
+    expireDays,
+    burnAfterRead
   })
 }
