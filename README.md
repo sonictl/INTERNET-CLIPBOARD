@@ -124,27 +124,17 @@ CREATE TABLE IF NOT EXISTS clipboard (
 使用Caddy作为Web服务器和反向代理，可以轻松处理HTTPS和API转发。以下是一个基本的Caddyfile配置示例：
 
 ```
-yourdomain.com {
-  # 启用HTTPS
-  tls your@email.com
-  
-  # 静态文件服务（前端构建输出）
-  root * /path/to/INTERNET-CLIPBOARD/dist
-  
-  # 处理Vue Router的历史模式
-  try_files {path} /index.html
-  
-  # API请求转发到后端
-  handle /api/* {
-    uri strip_prefix /api
-    reverse_proxy localhost:3002
-  }
-  
-  # 启用压缩
-  encode gzip
-  
-  # 文件服务
-  file_server
+:80 {
+    root * /var/www/haozhuxue/dist  # 静态文件根目录
+    file_server
+    handle /api/* {
+        reverse_proxy http://123.99.249.246:80
+    }
+
+    handle {
+        try_files {path} /index.html
+        file_server
+    }
 }
 ```
 
