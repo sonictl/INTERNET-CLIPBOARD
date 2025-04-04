@@ -124,8 +124,8 @@ CREATE TABLE IF NOT EXISTS clipboard (
 使用Caddy作为Web服务器和反向代理，可以轻松处理HTTPS和API转发。以下是一个基本的Caddyfile配置示例：
 
 ```
-your domain {
-    root * /var/www/clip.laozao.xyz/dist  # 静态文件根目录
+<youdomain> {
+    root * /var/www/<youdomain>/dist  # 静态文件根目录
     
     # 将所有 /api 请求转发到本机的 3009 端口，并移除 /api 前缀
     handle /api* {
