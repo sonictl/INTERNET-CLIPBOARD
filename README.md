@@ -127,10 +127,10 @@ CREATE TABLE IF NOT EXISTS clipboard (
 your domain {
     root * /var/www/clip.laozao.xyz/dist  # 静态文件根目录
     
-    # 将所有 /api 请求转发到本机的 3009 端口，并移除 /api 前缀
+    # 将所有 /api 请求转发到本机的 3002 端口，并移除 /api 前缀
     handle /api* {
         uri strip_prefix /api
-        reverse_proxy localhost:3009
+        reverse_proxy localhost:3002
     }
     
     # 处理前端路由（单页应用）
